@@ -6,5 +6,5 @@ function updateTime() {
 }
 
 updateTime();
-setInterval(updateTime, 60000);
+setInterval(updateTime, 30000);
 
