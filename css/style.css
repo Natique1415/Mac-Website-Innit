@@ -64,34 +64,6 @@ body {
   /* Make black icons white */
 }
 
-/* Navigation Bar Styles */
-
-/* Navigation Bar Styles - Responsive for all screen sizes */
-.nav-container {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-}
-
-.nav-bar {
-  height: 75vh;
-  /* 4% of viewport height - adjust as needed */
-
-  width: auto;
-  /* Width scales proportionally */
-
-  max-width: 105vw;
-  /* Maximum 60% of viewport width */
-
-  min-height: 30px;
-  /* Minimum height for very small screens */
-
-  max-height: 110px;
-  /* Maximum height for very large screens */
-}
-
 /* Name Select SVG Section */
 .name-select-container {
   display: flex;
