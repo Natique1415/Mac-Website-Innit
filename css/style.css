@@ -16,8 +16,6 @@
 }
 
 
-
-
 body {
   margin: 0;
   padding: 0;
@@ -85,19 +83,16 @@ body {
 #nameSelect.nav-bar {
   display: block;
   margin: 0 auto;
-  max-width: 400px;
-  /* increased from 420px to 600px for better visibility */
+  max-width: 370px;
   width: 100%;
   height: auto;
   background: none;
   box-shadow: none;
   border: none;
   transform: scale(1.2);
-  /* additional scaling for even better visibility */
 }
 
 
-/* Adjust as needed for responsiveness. */
 .bottom-icons {
   position: absolute;
   left: 0;
