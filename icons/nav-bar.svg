@@ -1,0 +1,62 @@
+<svg width="1104" height="143" viewBox="0 0 1104 143" fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style>
+    @font-face {
+      font-family: "SF Pro Display";
+      src: url('https://sf.abarba.me/SF-Pro-Display-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-display: swap;
+    }
+    text {
+      font-family: "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      font-weight: 500;
+    }
+  </style>
+  <mask id="b" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-36" y="-26" width="1176" height="196">
+    <path fill="#fff" d="M-36-26h1176v196H-36z"/>
+    <rect x="40" y="50" width="1024" height="44" rx="22" fill="#000"/>
+  </mask>
+  <g filter="url(#a)" mask="url(#b)">
+    <path d="M40 77c0-12.15 9.85-22 22-22h980c12.15 0 22 9.85 22 22s-9.85 22-22 22H62c-12.15 0-22-9.85-22-22" fill="#000" fill-opacity=".08" style="mix-blend-mode:hard-light"/>
+  </g>
+  <path d="M40 72c0-12.15 9.85-22 22-22h980c12.15 0 22 9.85 22 22s-9.85 22-22 22H62c-12.15 0-22-9.85-22-22" fill="#0F0F0F" style="mix-blend-mode:color-dodge"/>
+  <path d="M40 72c0-12.15 9.85-22 22-22h980c12.15 0 22 9.85 22 22s-9.85 22-22 22H62c-12.15 0-22-9.85-22-22" fill="#F5F5F5" fill-opacity=".4"/>
+  <rect x="40" y="50" width="1024" height="44" rx="22" fill="#000" fill-opacity=".01"/>
+
+  <!-- June 2006: Left-aligned, vertically centered in the bar -->
+  <text x="60" y="73" font-size="18" fill="#111"
+    dominant-baseline="middle"
+    text-anchor="start">June 2006</text>
+
+  <!-- Centered group for links and dividers -->
+  <g>
+    <a xlink:href="mailto:ibrarnatique8@gmail.com" target="_blank">
+      <text x="500" y="72" font-size="18" fill="#111"
+        text-anchor="middle" dominant-baseline="middle"
+        style="cursor:pointer;">Gmail</text>
+    </a>
+    <text x="560" y="72" font-size="18" fill="#000"
+      text-anchor="middle" dominant-baseline="middle">|</text>
+    <a xlink:href="https://github.com/Natique1415" target="_blank">
+      <text x="620" y="72" font-size="18" fill="#111"
+        text-anchor="middle" dominant-baseline="middle"
+        style="cursor:pointer;">GitHub</text>
+    </a>
+    <text x="680" y="72" font-size="18" fill="#000"
+      text-anchor="middle" dominant-baseline="middle">|</text>
+    <a xlink:href="https://www.linkedin.com/in/natique-ibrar-alam54a6681b6" target="_blank">
+      <text x="740" y="72" font-size="18" fill="#111"
+        text-anchor="middle" dominant-baseline="middle"
+        style="cursor:pointer;">Linkedin</text>
+    </a>
+  </g>
+
+  <defs>
+    <filter id="a" x="-40" y="-25" width="1184" height="204" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="20" result="effect1_foregroundBlur_31_194"/>
+    </filter>
+  </defs>
+</svg>
