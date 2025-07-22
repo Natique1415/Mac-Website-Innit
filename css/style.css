@@ -85,13 +85,15 @@ body {
 #nameSelect.nav-bar {
   display: block;
   margin: 0 auto;
-  max-width: 420px;
-  /* adjust width as needed */
+  max-width: 400px;
+  /* increased from 420px to 600px for better visibility */
   width: 100%;
   height: auto;
   background: none;
   box-shadow: none;
   border: none;
+  transform: scale(1.2);
+  /* additional scaling for even better visibility */
 }
 
 
