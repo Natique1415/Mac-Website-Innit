@@ -93,3 +93,45 @@ body {
   box-shadow: none;
   border: none;
 }
+
+
+/* Adjust as needed for responsiveness. */
+.bottom-icons {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  /* Adjust as needed */
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.icon-group {
+  display: flex;
+  gap: 35px;
+  /* Space between icons */
+  align-items: center;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+  background: transparent;
+}
+
+.icon-label {
+  color: #fff;
+  opacity: 0.7;
+  font-size: 1.1rem;
+  font-family: 'Inter', Arial, sans-serif;
+  letter-spacing: 1px;
+}
