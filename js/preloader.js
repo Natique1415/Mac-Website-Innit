@@ -58,19 +58,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Handle successful video load and attempt autoplay
         bootVideo.addEventListener('canplay', function () {
-            // Try to play with sound first (modern browsers may block this)
-            bootVideo.muted = false;
-
             bootVideo.play().catch(function (error) {
-                console.log('Autoplay with sound failed, trying muted:', error);
-                // Fallback to muted autoplay
-                bootVideo.muted = true;
-
-                bootVideo.play().catch(function (mutedError) {
-                    console.log('Video playback failed entirely:', mutedError);
-                    clearTimeout(fallbackTimer);
-                    hidePreloader();
-                });
+                console.log('Video playback failed:', error);
+                clearTimeout(fallbackTimer);
+                hidePreloader();
             });
         });
 
