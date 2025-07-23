@@ -1,21 +1,114 @@
-/* Apple style fonts - SF Pro from web */
+/* Apple style fonts - Local fonts with fallbacks */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* Local SF Pro Display fonts - Fixed file names */
 @font-face {
   font-family: "SF Pro Display";
-  src: url('https://sf.abarba.me/SF-Pro-Display-Medium.otf') format('opentype');
+  src: url('../fonts/sf-pro-display-medium.woff2') format('woff2'),
+    url('../fonts/sf-pro-display-medium.woff') format('woff');
   font-weight: 500;
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "SF Pro Display";
-  src: url('https://sf.abarba.me/SF-Pro-Display-Semibold.otf') format('opentype');
+  src: url('../fonts/sf-pro-display-semibold.woff2') format('woff2'),
+    url('../fonts/sf-pro-display-semibold.woff') format('woff');
   font-weight: 600;
+  font-style: normal;
   font-display: swap;
 }
 
+/* ===== PRELOADER STYLES ===== */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 1;
+  transition: opacity 0.8s ease-out;
+}
 
+.preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.boot-video {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Skip button for user convenience */
+.skip-button {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeInSkip 0.5s ease-in 1s forwards;
+  transition: all 0.2s ease;
+}
+
+.skip-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+@keyframes fadeInSkip {
+  to {
+    opacity: 0.7;
+  }
+}
+
+/* Loading fallback */
+.loading-fallback {
+  display: none;
+  text-align: center;
+  color: white;
+  font-family: "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.loading-fallback h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.loading-fallback p {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Main content initially hidden */
+.main-content {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.main-content.show {
+  opacity: 1;
+}
+
+/* ===== MAIN WEBSITE STYLES ===== */
 body {
   margin: 0;
   padding: 0;
@@ -91,7 +184,6 @@ body {
   border: none;
   transform: scale(1.2);
 }
-
 
 .bottom-icons {
   position: absolute;

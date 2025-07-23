@@ -9,58 +9,74 @@
 </head>
 
 <body>
-  <!-- Time Section -->
-  <div class="status-bar">
-    <div class="left-content">
-      <div class="time" id="currentTime">--:--</div>
+  <!-- Mac OS Boot-up Video Preloader -->
+  <div class="preloader" id="preloader">
+    <video class="boot-video" autoplay muted preload="auto" id="bootVideo">
+      <source src="boot-up-video.mp4" type="video/mp4">
+      <!-- Fallback for browsers that don't support video -->
+      <div class="loading-fallback">
+        <h2>Starting up...</h2>
+        <p>Please wait</p>
+      </div>
+    </video>
+    <button class="skip-button" id="skipButton">Skip</button>
+  </div>
+
+  <!-- Main Website Content -->
+  <div class="main-content" id="mainContent">
+    <!-- Time Section -->
+    <div class="status-bar">
+      <div class="left-content">
+        <div class="time" id="currentTime">--:--</div>
+      </div>
+
+      <!-- Battery/Wifi/Cellular Section -->
+      <div class="right-content">
+        <object data="icons/cellular-connection.svg" type="image/svg+xml" class="icon"></object>
+        <object data="icons/wifi.svg" type="image/svg+xml" class="icon"></object>
+        <svg id="battery-icon" width="28" height="13" viewBox="0 0 28 13" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="icon">
+          <rect opacity="0.35" x="0.506836" y="0.5" width="24" height="12" rx="3.8" stroke="white" />
+          <path opacity="0.4"
+            d="M26.0068 4.78113V8.8566C26.8116 8.51143 27.3349 7.70847 27.3349 6.81886C27.3349 5.92926 26.8116 5.1263 26.0068 4.78113Z"
+            fill="white" />
+          <rect id="battery-fill" x="2.00684" y="2" width="21" height="9" rx="2.5" fill="white" />
+        </svg>
+      </div>
     </div>
 
+    <!-- Name Select SVG Section -->
+    <div class="name-select-container">
+      <object data="icons/name-select.svg" type="image/svg+xml" class="nav-bar" id="nameSelect"></object>
+    </div>
 
-    <!-- Battery/Wifi/Cellular Section -->
-    <div class="right-content">
-      <object data="icons/cellular-connection.svg" type="image/svg+xml" class="icon"></object>
-      <object data="icons/wifi.svg" type="image/svg+xml" class="icon"></object>
-      <svg id="battery-icon" width="28" height="13" viewBox="0 0 28 13" fill="none" xmlns="http://www.w3.org/2000/svg"
-        class="icon">
-        <rect opacity="0.35" x="0.506836" y="0.5" width="24" height="12" rx="3.8" stroke="white" />
-        <path opacity="0.4"
-          d="M26.0068 4.78113V8.8566C26.8116 8.51143 27.3349 7.70847 27.3349 6.81886C27.3349 5.92926 26.8116 5.1263 26.0068 4.78113Z"
-          fill="white" />
-        <rect id="battery-fill" x="2.00684" y="2" width="21" height="9" rx="2.5" fill="white" />
-      </svg>
+    <!-- Icons Section-->
+    <div class="bottom-icons">
+      <div class="icon-group" id="mac-dock">
+        <div class="icon-item">
+          <a href="https://github.com/Natique1415">
+            <img src="icons/github.svg" alt="GitHub" class="social-icon" />
+          </a>
+          <div class="icon-label"></div>
+        </div>
+        <div class="icon-item">
+          <a href="mailto:ibrarnatique8@gmail.com">
+            <img src="icons/gmail.svg" alt="Gmail" class="social-icon" />
+          </a>
+          <div class="icon-label"></div>
+        </div>
+        <div class="icon-item">
+          <a href="https://www.linkedin.com/in/natique-ibrar-alam54a6681b6/">
+            <img src="icons/linkedin.svg" alt="LinkedIn" class="social-icon" />
+          </a>
+          <div class="icon-label"></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Name Select SVG Section -->
-  <div class="name-select-container">
-    <object data="icons/name-select.svg" type="image/svg+xml" class="nav-bar" id="nameSelect"></object>
-  </div>
-
-
-  <!-- Icons Section-->
-  <div class="bottom-icons">
-    <div class="icon-group" id="mac-dock">
-      <div class="icon-item">
-        <a href="https://github.com/Natique1415">
-          <img src="icons/github.svg" alt="GitHub" class="social-icon" />
-        </a>
-        <div class="icon-label"></div>
-      </div>
-      <div class="icon-item">
-        <a href="mailto:ibrarnatique8@gmail.com">
-          <img src="icons/gmail.svg" alt="Gmail" class="social-icon" />
-        </a>
-        <div class="icon-label"></div>
-      </div>
-      <div class="icon-item">
-        <a href="https://www.linkedin.com/in/natique-ibrar-alam54a6681b6/">
-          <img src="icons/linkedin.svg" alt="LinkedIn" class="social-icon" />
-        </a>
-        <div class="icon-label"></div>
-      </div>
-    </div>
-  </div>
-
+  <!-- Scripts -->
+  <script src="js/preloader.js"></script>
   <script src="js/time.js"></script>
   <script src="js/battery.js"></script>
   <script src="js/dock.js"></script>
