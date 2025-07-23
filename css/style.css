@@ -42,8 +42,8 @@
 }
 
 .boot-video {
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
   background: #000;
 }
