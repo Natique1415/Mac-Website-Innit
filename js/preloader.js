@@ -1,6 +1,6 @@
 /**
- * Mac OS Boot-up Video Preloader
- * Handles the boot-up video that plays before the main website loads
+ * Mac OS Boot-up Video Preloader with First Visit Detection
+ * Only shows boot-up video on first visit to avoid annoyance
  */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const mainContent = document.getElementById('mainContent');
     const bootVideo = document.getElementById('bootVideo');
     const skipButton = document.getElementById('skipButton');
+
+    // Check if user has visited before
+    const hasVisitedBefore = localStorage.getItem('hasSeenBootVideo');
 
     // Fallback timer reference
     let fallbackTimer;
@@ -22,13 +25,23 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             preloader.style.display = 'none';
             mainContent.classList.add('show');
-            // Cleanup preloader resources
             cleanupPreloader();
-        }, 800); // Match the CSS transition duration
+        }, 800);
+    }
+
+    /**
+     * Skip directly to main content without video
+     */
+    function skipToMainContent() {
+        preloader.style.display = 'none';
+        mainContent.classList.add('show');
+        mainContent.style.opacity = '1'; // Immediate show, no fade
+        console.log('Returning visitor - skipping boot video');
     }
 
     function cleanupPreloader() {
-        // Just clean up any preloader-specific resources if needed
+        // Mark that user has seen the boot video
+        localStorage.setItem('hasSeenBootVideo', 'true');
         console.log('Boot-up complete - main website loaded');
     }
 
@@ -45,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Skip button functionality
         if (skipButton) {
             skipButton.addEventListener('click', function () {
-                bootVideo.currentTime = bootVideo.duration; // Jump to end
+                bootVideo.currentTime = bootVideo.duration;
             });
         }
 
@@ -70,17 +83,21 @@ document.addEventListener('DOMContentLoaded', function () {
             clearTimeout(fallbackTimer);
             console.log('Boot video playing successfully');
         });
-
-        // Handle when video is paused (shouldn't happen with autoplay)
-        bootVideo.addEventListener('pause', function () {
-            console.log('Boot video paused unexpectedly');
-        });
     }
 
     /**
      * Initialize the preloader system
      */
     function initPreloader() {
+        // If user has visited before, skip the boot video entirely
+        if (hasVisitedBefore) {
+            skipToMainContent();
+            return;
+        }
+
+        // First-time visitor - show boot video
+        console.log('First-time visitor - showing boot video');
+
         // Set up video controls
         setupVideoControls();
 
@@ -90,9 +107,8 @@ document.addEventListener('DOMContentLoaded', function () {
             hidePreloader();
         }, 4000);
 
-        // Optional: Allow clicking anywhere on preloader to skip (except skip button)
+        // Allow clicking anywhere on preloader to skip
         preloader.addEventListener('click', function (event) {
-            // Don't skip if clicking the skip button (it has its own handler)
             if (event.target !== skipButton) {
                 bootVideo.currentTime = bootVideo.duration;
             }
@@ -102,23 +118,35 @@ document.addEventListener('DOMContentLoaded', function () {
     // Start the preloader system
     initPreloader();
 
-    // Optional: Expose functions globally for debugging
+    // Enhanced debugging functions
     window.preloaderControls = {
         skip: function () {
-            bootVideo.currentTime = bootVideo.duration;
+            if (bootVideo && bootVideo.duration) {
+                bootVideo.currentTime = bootVideo.duration;
+            }
         },
         forceHide: function () {
             clearTimeout(fallbackTimer);
             hidePreloader();
         },
-        getVideoState: function () {
+        resetFirstVisit: function () {
+            localStorage.removeItem('hasSeenBootVideo');
+            console.log('First visit flag reset - reload page to see boot video again');
+        },
+        checkVisitStatus: function () {
             return {
+                hasVisitedBefore: !!localStorage.getItem('hasSeenBootVideo'),
+                canResetWith: 'preloaderControls.resetFirstVisit()'
+            };
+        },
+        getVideoState: function () {
+            return bootVideo ? {
                 currentTime: bootVideo.currentTime,
                 duration: bootVideo.duration,
                 paused: bootVideo.paused,
                 muted: bootVideo.muted,
                 readyState: bootVideo.readyState
-            };
+            } : 'Video not available (returning visitor)';
         }
     };
 });
